@@ -15,7 +15,6 @@ import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
 
-import requests
 import shutil
 from datetime import date
 
