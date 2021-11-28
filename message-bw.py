@@ -28,9 +28,10 @@ try:
     #epd.Clear()
 
     logging.info("3.read bmp file")
-    #Himage = Image.open(os.path.join(imgdir, 'message.png'))
-    Himage_Other = Image.new('1', (epd.height, epd.width), 255)
+    blackimg = Image.open(os.path.join(imgdir, 'message.png'))
+    redimg = Image.new('1', (epd.height, epd.width), 255)
 
+    '''
     redimg = Image.open(os.path.join(imgdir,'message.png'))  # get image)
     rpixels = redimg.load()  # create the pixel map
     blackimg = Image.open(os.path.join(imgdir,'message.png')) # get image)
@@ -43,6 +44,7 @@ try:
             else:
               rpixels[i, j] = (255, 255, 255)  # change it to white in the red image bitmap
 
+    '''
     epd.display(epd.getbuffer(blackimg),epd.getbuffer(redimg))
 
     logging.info("Clear...")
