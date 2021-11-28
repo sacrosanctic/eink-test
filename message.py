@@ -29,12 +29,12 @@ try:
     #epd.Clear()
 
     logging.info("3.read bmp file")
-    #Himage = Image.open(os.path.join(imgdir, 'images/message2.jpg'))
+    #Himage = Image.open(os.path.join(imgdir, '/message2.jpg'))
     Himage_Other = Image.new('1', (epd.height, epd.width), 255)
 
-    redimg = Image.open(imgdir,'images/message2.jpg')  # get image)
+    redimg = Image.open(imgdir,'/message2.jpg')  # get image)
     rpixels = redimg.load()  # create the pixel map
-    blackimg = Image.open(imgdir,'images/message2.jpg')  # get image)
+    blackimg = Image.open(imgdir,'/message2.jpg')  # get image)
     bpixels = blackimg.load()  # create the pixel map
 
     for i in range(redimg.size[0]):  # loop through every pixel in the image
