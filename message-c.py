@@ -29,6 +29,7 @@ try:
 
     logging.info("3.read bmp file")
 
+    '''
     redimg = Image.open(os.path.join(imgdir,'message2.png'))  # get image)
     rpixels = redimg.load()  # create the pixel map
     blackimg = Image.open(os.path.join(imgdir,'message2.png')) # get image)
@@ -42,6 +43,26 @@ try:
               rpixels[i, j] = (255, 255, 255)  # change it to white in the red image bitmap
 
     epd.display(epd.getbuffer(blackimg),epd.getbuffer(redimg))
+    '''
+
+    import cv2
+    import numpy as np
+
+    #read image
+    src = cv2.imread(os.path.join(imgdir,'message2.png'), cv2.IMREAD_UNCHANGED)
+
+    # extract red channel
+    red_channel = src[:,:,2]
+
+    # create empty image with same shape as that of src image
+    red_img = np.zeros(src.shape)
+
+    #assign the red channel of src to empty image
+    red_img[:,:,2] = red_channel
+
+    #save image
+    blackimg = Image.new('1', (epd.height, epd.width), 255)
+    epd.display(epd.getbuffer(blackimg),epd.getbuffer(red_img))
 
     logging.info("Clear...")
     #epd.init()
