@@ -1,4 +1,3 @@
-
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 import sys
@@ -42,13 +41,12 @@ try:
             if rpixels[i, j][0] <= rpixels[i, j][1] and rpixels[i, j][0] <= rpixels[i, j][2]:  # if is not red
                 rpixels[i, j] = (255, 255, 255)  # change it to white in the red image bitmap
 
-            elif bpixels[i, j][0] > bpixels[i, j][1] and bpixels[i, j][0] > bpixels[i, j][2]:  # if is red
+            #elif bpixels[i, j][0] > bpixels[i, j][1] and bpixels[i, j][0] > bpixels[i, j][2]:  # if is red
+            else
                 bpixels[i, j] = (255, 255, 255)  # change to white in the black image bitmap
 
-    
 
-
-    epd.display(epd.getbuffer(redimg),epd.getbuffer(blackimg))
+    epd.display(epd.getbuffer(blackimg),epd.getbuffer(redimg))
 
     logging.info("Clear...")
     #epd.init()
@@ -56,11 +54,11 @@ try:
 
     logging.info("Goto Sleep...")
     epd.sleep()
-    
+
 except IOError as e:
     logging.info(e)
-    
-except KeyboardInterrupt:    
+
+except KeyboardInterrupt:
     logging.info("ctrl + c:")
     epd7in5b_V2.epdconfig.module_exit()
     exit()
