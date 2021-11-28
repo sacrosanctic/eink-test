@@ -15,7 +15,6 @@ import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
 
-import requests
 import shutil
 from datetime import date
 
@@ -29,16 +28,28 @@ try:
     epd.init()
     #epd.Clear()
 
-    font48 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'),48)
-    font36 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 36)
-    font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
-    font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
-    fontbig = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 72)
-
     logging.info("3.read bmp file")
-    Himage = Image.open(os.path.join(imgdir, 'message2.png'))
+    #Himage = Image.open(os.path.join(self.currPath 'images/message2.jpg'))
     Himage_Other = Image.new('1', (epd.height, epd.width), 255)
-    epd.display(epd.getbuffer(Himage),epd.getbuffer(Himage_Other))
+
+    redimg = Image.open(self.currPath + 'images/message2.jpg')  # get image)
+    rpixels = redimg.load()  # create the pixel map
+    blackimg = Image.open(self.currPath + 'images/message2.jpg')  # get image)
+    bpixels = blackimg.load()  # create the pixel map
+
+    for i in range(redimg.size[0]):  # loop through every pixel in the image
+        for j in range(redimg.size[1]): # since both bitmaps are identical, cycle only once and not both bitmaps
+            if rpixels[i, j][0] <= rpixels[i, j][1] and rpixels[i, j][0] <= rpixels[i, j][2]:  # if is not red
+                rpixels[i, j] = (255, 255, 255)  # change it to white in the red image bitmap
+
+            elif bpixels[i, j][0] > bpixels[i, j][1] and bpixels[i, j][0] > bpixels[i, j][2]:  # if is red
+                bpixels[i, j] = (255, 255, 255)  # change to white in the black image bitmap
+
+    redimg = redimg.rotate(self.rotateAngle, expand=True)
+    blackimg = blackimg.rotate(self.rotateAngle, expand=True)
+
+
+    epd.display(epd.getbuffer(redimg),epd.getbuffer(blackimg))
 
     logging.info("Clear...")
     #epd.init()
