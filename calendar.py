@@ -29,14 +29,8 @@ try:
     epd.init()
     #epd.Clear()
 
-    font48 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'),48)
-    font36 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 36)
-    font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
-    font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
-    fontbig = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 72)
-
     logging.info("3.read bmp file")
-    Himage = Image.open(os.path.join(imgdir, 'message.png'))
+    Himage = Image.open(os.path.join(imgdir, 'calendar.png'))
     Himage_Other = Image.new('1', (epd.height, epd.width), 255)
     epd.display(epd.getbuffer(Himage),epd.getbuffer(Himage_Other))
 
