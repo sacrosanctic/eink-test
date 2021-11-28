@@ -28,7 +28,7 @@ try:
     #epd.Clear()
 
     logging.info("3.read bmp file")
-    blackimg = Image.open(os.path.join(imgdir, 'message.png'))
+    blackimg = Image.open(os.path.join(imgdir, 'message.jpg'))
     redimg = Image.new('1', (epd.height, epd.width), 255)
 
     '''
