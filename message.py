@@ -29,12 +29,12 @@ try:
     #epd.Clear()
 
     logging.info("3.read bmp file")
-    #Himage = Image.open(os.path.join(self.currPath 'images/message2.jpg'))
+    #Himage = Image.open(os.path.join(imgdir, 'images/message2.jpg'))
     Himage_Other = Image.new('1', (epd.height, epd.width), 255)
 
-    redimg = Image.open(self.currPath + 'images/message2.jpg')  # get image)
+    redimg = Image.open(imgdir,'images/message2.jpg')  # get image)
     rpixels = redimg.load()  # create the pixel map
-    blackimg = Image.open(self.currPath + 'images/message2.jpg')  # get image)
+    blackimg = Image.open(imgdir,'images/message2.jpg')  # get image)
     bpixels = blackimg.load()  # create the pixel map
 
     for i in range(redimg.size[0]):  # loop through every pixel in the image
@@ -45,8 +45,7 @@ try:
             elif bpixels[i, j][0] > bpixels[i, j][1] and bpixels[i, j][0] > bpixels[i, j][2]:  # if is red
                 bpixels[i, j] = (255, 255, 255)  # change to white in the black image bitmap
 
-    redimg = redimg.rotate(self.rotateAngle, expand=True)
-    blackimg = blackimg.rotate(self.rotateAngle, expand=True)
+    
 
 
     epd.display(epd.getbuffer(redimg),epd.getbuffer(blackimg))
