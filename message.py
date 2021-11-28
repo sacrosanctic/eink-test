@@ -42,7 +42,7 @@ try:
                 rpixels[i, j] = (255, 255, 255)  # change it to white in the red image bitmap
 
             #elif bpixels[i, j][0] > bpixels[i, j][1] and bpixels[i, j][0] > bpixels[i, j][2]:  # if is red
-            else
+            else:
                 bpixels[i, j] = (255, 255, 255)  # change to white in the black image bitmap
 
 
