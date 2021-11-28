@@ -31,9 +31,9 @@ try:
     #Himage = Image.open(os.path.join(imgdir, 'message2.jpg'))
     Himage_Other = Image.new('1', (epd.height, epd.width), 255)
 
-    redimg = Image.open(os.path.join(imgdir,'message2.jpg'))  # get image)
+    redimg = Image.open(os.path.join(imgdir,'message2.png'))  # get image)
     rpixels = redimg.load()  # create the pixel map
-    blackimg = Image.open(os.path.join(imgdir,'message2.jpg')) # get image)
+    blackimg = Image.open(os.path.join(imgdir,'message2.png')) # get image)
     bpixels = blackimg.load()  # create the pixel map
 
     for i in range(redimg.size[0]):  # loop through every pixel in the image
