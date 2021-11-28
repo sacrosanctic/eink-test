@@ -1,4 +1,3 @@
-
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 import sys
@@ -14,10 +13,6 @@ import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
 
-import requests
-import shutil
-from datetime import date
-
 logging.basicConfig(level=logging.DEBUG)
 
 try:
@@ -32,7 +27,6 @@ try:
     Himage = Image.open(os.path.join(picdir, '7in5_V2_b.bmp'))
     Himage_Other = Image.open(os.path.join(picdir, '7in5_V2_r.bmp'))
     epd.display(epd.getbuffer(Himage),epd.getbuffer(Himage_Other))
-    time.sleep(30)
 
     logging.info("Clear...")
     #epd.init()
@@ -40,11 +34,11 @@ try:
 
     logging.info("Goto Sleep...")
     epd.sleep()
-    
+
 except IOError as e:
     logging.info(e)
-    
-except KeyboardInterrupt:    
+
+except KeyboardInterrupt:
     logging.info("ctrl + c:")
     epd7in5b_V2.epdconfig.module_exit()
     exit()
