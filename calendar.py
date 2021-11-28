@@ -31,6 +31,7 @@ try:
 
     logging.info("3.read bmp file")
     Himage = Image.open(os.path.join(imgdir, 'calendar.png'))
+    Himage = Himage.resize(epd.height, epd.width)
     Himage_Other = Image.new('1', (epd.height, epd.width), 255)
     epd.display(epd.getbuffer(Himage),epd.getbuffer(Himage_Other))
 
