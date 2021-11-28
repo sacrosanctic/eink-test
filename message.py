@@ -39,9 +39,9 @@ try:
     for i in range(redimg.size[0]):  # loop through every pixel in the image
         for j in range(redimg.size[1]):
             if bpixels[i, j][0] > bpixels[i, j][1] and bpixels[i, j][0] > bpixels[i, j][2]:
-                bpixels[i, j] = (255, 255, 255)  # change to white in the black image bitmap
-              else:
-                rpixels[i, j] = (255, 255, 255)  # change it to white in the red image bitmap
+              bpixels[i, j] = (255, 255, 255)  # change to white in the black image bitmap
+            else:
+              rpixels[i, j] = (255, 255, 255)  # change it to white in the red image bitmap
 
     epd.display(epd.getbuffer(blackimg),epd.getbuffer(redimg))
 
